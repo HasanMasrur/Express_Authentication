@@ -5,15 +5,14 @@ import userSchema from '../models/userSchema.js';
 import bcrypt from 'bcrypt';
 
 export const postUser = async (req, res, next) =>{
-    console.log('i am calling');
-    console.log(req.body.username);
+
    
     try {
         console.log(req.body.name);
         console.log(req.body.username);
         console.log(req.body.password);
         const hashedPassword = await bcrypt.hash(req.body.password,10);
-        const newUser = new userSchema.UserModel({
+        const newUser = new userSchema({
             name:req.body.name,
             username:req.body.username,
             password:hashedPassword,
