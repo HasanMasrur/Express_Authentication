@@ -4,24 +4,17 @@ import router  from '../api/routes/signup.route.js';
 import userSchema from '../models/userSchema.js';
 import bcrypt from 'bcrypt';
 import {SignupService} from '../services/auth.service.js'
+import Status from '../const/status.js';
+import StatusCode from '../const/status_code.js';
+import ResponseHelper from '../helpers/response/response.helper.js';
 export const postUser = async (req, res, next) =>{
     try {
  const data = await SignupService.postSignUp(req,res);
  console.log(data);
- if(data['status'] == "200")
-{
- return   res.status(200).json({
-       result:data,
-    })
-}  
-else {
-    return   res.status(200).json({
-        result:data
-    })
-}
-    
+ return res.status(200).json(ResponseHelper.successMessage(StatusCode.SUCCESS,Status.SUCCESS,'',data))
+
     } catch (error) {
-        res.status(500).json({
+ return       res.status().json({
             message : "Signup failed",
         });
     }

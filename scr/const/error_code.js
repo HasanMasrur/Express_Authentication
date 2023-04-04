@@ -1,0 +1,12 @@
+const ErrorCode ={
+    SERVER_ERROR:500,
+    VALIDATION_ERROR:1002,
+    TOKEN_EXPIRED_ERROR:1050,
+    UNAUTHORIZED_ERROR:2002,
+    DUPLICATE_ERROR:1010,
+    BAD_REQUEST_ERROR:1458,
+};
+export const MongodbError ={
+    DUPLICATE_ERROR:11000,
+};
+export default ErrorCode;
