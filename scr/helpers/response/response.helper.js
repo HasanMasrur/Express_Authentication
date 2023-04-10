@@ -5,6 +5,10 @@ const ResponseHelper = {
     successMessage: function(status_code,status,message="",data=[]){
         const response = this.message(status_code,status,message);
         return {...response,data};
-    }
+    },
+    successMessageToken: function(status_code,status,token="",data=[]){
+        const response = this.message(status_code,status,token);
+        return {...response,data};
+    },
 }
 export default ResponseHelper;
