@@ -7,6 +7,6 @@ app.use(cors());
 dbConfig();
 app.use(express.json())
 app.use("/api",apiRouter);
-app.listen(3000,()=>{
+app.listen(3001,()=>{
     console.log("app listening at port 3000");
 });

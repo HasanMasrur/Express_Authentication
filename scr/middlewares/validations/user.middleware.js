@@ -6,6 +6,9 @@ import constValue from "../../const/const_value.js";
 import ResponseHelper from "../../helpers/response/response.helper.js"
 import UserModel from "../../models/userSchema.js";
 import bcrypt from 'bcrypt';
+import  jwt  from 'jsonwebtoken';
+import { constants } from 'buffer';
+
 export const UserRegValidationMiddleware = async (req,res,next) =>{
     try {
      const {name,username,email,password}= req.body;
@@ -149,5 +152,43 @@ export const UserLogValidationMiddleware = async (req,res,next) =>{
     } catch (error) {
         next(error);
     }
+
+};
+
+export const UserTokenMiddleware = async (req,res,next) =>{
+    try {
+        const { authorization } = req.headers;
+    
+            console.log(authorization);
+            const token = authorization.split(' ')[1];
+            const user = jwt.verify(token,  "hasan123210");
+       
+            if(user ){
+                console.log('working');
+                const { username, userId } = user;
+                req.username = username;
+                req.userId = userId;
+                var data = {token:token,user} ;
+ return res.status(200).json(ResponseHelper.successMessageToken(StatusCode.SUCCESS,Status.SUCCESS,'',data));
+                
+                //{token:token,user} ;
+            } else {
+                return   res.status(StatusCode.BAD_REQUEST).json(
+                    ResponseHelper.message(
+                        ErrorCode.VALIDATION_ERROR,
+                        Status.ERROR,
+                        "Authentication Error"
+                    ) 
+                );
+            }
+
+        
+      
+        next()
+    } catch (error) {
+        next(error);
+    }
+
+
 
 };

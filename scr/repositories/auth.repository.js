@@ -29,7 +29,6 @@ const user = await userSchema.find({email:req.body.email});
 console.log(user);
 if(user &&  user.length> 0){
     const isValidPassword = await bcrypt.compare(req.body.password, user[0].password);
-
     if(isValidPassword) {
         // generate token
         const token = jwt.sign({
@@ -44,6 +43,27 @@ console.log(token);
 }
         } catch (error) {
             next(error);
+        }
+    }
+}
+
+export const tokenRepository = {
+    getToken: async (req, res, next) => {
+        const { authorization } = req.headers;
+        try {
+            console.log(authorization);
+            const token = authorization.split(' ')[1];
+            const user = jwt.verify(token,  "hasan123210");
+       
+            if(user ){
+                console.log('working');
+                const { username, userId } = user;
+                req.username = username;
+                req.userId = userId;
+                return {token:token,user} ;
+            }
+        } catch (error) {
+            throw error;
         }
     }
 }
