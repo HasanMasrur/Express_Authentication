@@ -35,7 +35,7 @@ if(user &&  user.length> 0){
             username: user[0].username,
             userId: user[0]._id,
         }, "hasan123210", {
-            expiresIn: '1h'
+            expiresIn: '1m'
         });
 console.log(token);
        return {token:token,user:user[0]} ;

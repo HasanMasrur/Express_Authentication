@@ -1,4 +1,4 @@
-import Status  from "../const/status";
+import Status  from "../const/status.js";
 export class AppError extends Error{
     constructor(message,statusCode,errorCode =null){
         super(message);

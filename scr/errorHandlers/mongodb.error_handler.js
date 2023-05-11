@@ -26,3 +26,4 @@ return new AppError(
 );
 },
 };
+export default MongodbErrorHandler;

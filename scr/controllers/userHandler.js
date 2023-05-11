@@ -45,10 +45,10 @@ export const getToken = async (req, res, next) => {
         return res.status(200).json(ResponseHelper.successMessageToken(StatusCode.SUCCESS, Status.SUCCESS, '', data))
 
     } catch (error) {
-       
-        return res.status(200).json({
-            message: error,
-        });
+       next(error);
+        // return res.status(200).json({
+        //     message: error,
+        // });
     }
 
 }

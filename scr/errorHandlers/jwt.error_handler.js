@@ -1,5 +1,5 @@
 import ErrorCode from "../const/error_code.js";
-import { ErrorMessage } from " . . /api/const/general. js";
+import { ErrorMessage } from "../const/general.js";
 import StatusCode from "../const/status_code.js";
 import { AppError } from "./appError.js";
 
@@ -11,7 +11,7 @@ const JwtErrorHandler ={
             ErrorCode. TOKEN_EXPIRED_ERROR
         );
     },
-    JsonWebTokenError: (error)=>{ 
+    JsonebTokenError: (error)=>{ 
         return new AppError(
              ErrorMessage.Auth,
              StatusCode. UNAUTHORIZED,
