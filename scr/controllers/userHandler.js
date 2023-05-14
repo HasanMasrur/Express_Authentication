@@ -16,9 +16,10 @@ export const postUser = async (req, res, next) => {
         return res.status(200).json(ResponseHelper.successMessage(StatusCode.SUCCESS, Status.SUCCESS, '', data))
 
     } catch (error) {
-        return res.status().json({
-            message: "Signup failed",
-        });
+        next(error);
+        // return res.status().json({
+        //     message: "Signup failed",
+        // });
     }
 
 }

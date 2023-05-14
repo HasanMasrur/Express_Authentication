@@ -8,7 +8,7 @@ try {
     })
     console.log('mongoose connection successful');
 } catch (error) {
-    console.log(error);
+    next(error);
 }
 }
 export default dbConfig ;
