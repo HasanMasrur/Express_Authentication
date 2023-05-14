@@ -12,7 +12,7 @@ app.use("/api",apiRouter);
 app.use((err,req,res,next)=>{
     return ErrorHandlerMiddleware(err,req,res,next);
 })
-
-app.listen(3030,()=>{
+const port = process.env.PORT || 3030;
+app.listen(port,()=>{
     console.log("app listening at port 3030");
 });
