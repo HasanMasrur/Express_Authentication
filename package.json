@@ -8,5 +8,15 @@
     "mongoose": "^7.0.3",
     "node": "^19.8.1",
     "nodemon": "^2.0.22"
-  }
+  },
+  "name": "auth_express",
+  "description": "List of work :",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
